@@ -1,7 +1,7 @@
 ## Instalación
 
 Deben tener `npm` instalado en su máquina. Para eso, sigan las indicaciones en la siguiente página: [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-
+Versión de Node: 22.
 Una vez instalado `npm`, deben ejecutar los siguientes comandos en la consola:
 
 1. Instalar las dependencias:
