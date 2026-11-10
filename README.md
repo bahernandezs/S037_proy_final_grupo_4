@@ -155,6 +155,24 @@ Si quieren ver el coverage de las pruebas, pueden ejecutar el siguiente comando:
 npm run test:coverage
 ```
 
+### Requisitos del entorno de pruebas
+
+- Node.js v22 LTS (probado con v22.23.4) y `npm install` (instala el binding nativo de `sqlite3`).
+- Si `sqlite3` no carga el binding en tu máquina, prueba `npm rebuild sqlite3`. Un error de ese tipo es de entorno, no un fallo de las reglas.
+- Las pruebas usan SQLite en memoria (`NODE_ENV=test` lo fija Jest); no necesitan `db.sqlite`.
+
+### Resultado esperado de `npm test`
+
+`npm test` puede terminar con pruebas en rojo. Esos fallos son **hallazgos**: el servidor incumple una regla de este README y la prueba se deja fallando a propósito (no se modifica la aserción). Los hallazgos están documentados en `docs/aporte-integrante3.md` y en el informe.
+
+Para correr solo un archivo, por ejemplo las pruebas de integración del carrito:
+
+```bash
+npx jest tests/routes/cartIntegration.test.js
+```
+
+Las pruebas de integración del carrito usan la aplicación real (`app.js`) con los prefijos reales `/cart`, `/products` y `/categories`, sin prefijo de arnés.
+
 ## Ejecutar mutation testing con stryker
 
 Para ejecutar mutation testing con stryker, deben ejecutar el siguiente comando:
