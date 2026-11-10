@@ -1,0 +1,12 @@
+PASS tests/routes/categoriesIntegrante2.test.js
+  Integrante 2 — categorías reales, SQLite en memoria
+    ✓ T05 nombre nuevo y persistencia — válida (235 ms)
+    ✓ T06 nombre único y rechazo sin inserción — inválida (37 ms)
+    ✓ T07 listar todas las categorías sin alterarlas — válida (37 ms)
+    ✓ T08 lista vacía sin crear registros — límite (24 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        2.709 s
+Ran all test suites matching /tests\/routes\/categoriesIntegrante2.test.js/i.

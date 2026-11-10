@@ -1,0 +1,42 @@
+PASS tests/services/pricingCombinatorio.integrante2.test.js
+  ✓ N01 validación de entrada de checkout — inválida (1 ms)
+  ✓ N02 validación de entrada de checkout — inválida (1 ms)
+  ✓ N03 validación de entrada de checkout — inválida (1 ms)
+  ✓ N04 validación de entrada de checkout — inválida (1 ms)
+  ✓ N05 validación de entrada de checkout — inválida (1 ms)
+  ✓ N06 validación de entrada de checkout — inválida (2 ms)
+  ✓ N07 validación de entrada de checkout — inválida (1 ms)
+  ✓ N08 validación de entrada de checkout — inválida (1 ms)
+  ✓ N09 validación de entrada de checkout — inválida (3 ms)
+  ✓ N10 validación de entrada de checkout — inválida (1 ms)
+  ✓ N11 validación de entrada de checkout — inválida (2 ms)
+  ✓ N12 validación de entrada de checkout — inválida (1 ms)
+  ✓ N13 validación de entrada de checkout — inválida (1 ms)
+  ✓ N14 validación de entrada de checkout — inválida (1 ms)
+  ✓ N15 validación de entrada de checkout — inválida (1 ms)
+  ✓ N16 validación de entrada de checkout — inválida (1 ms)
+  ✓ N17 validación de entrada de checkout — inválida (1 ms)
+  ✓ N18 validación de entrada de checkout — inválida (1 ms)
+  ✓ N19 validación de entrada de checkout — inválida (1 ms)
+  ✓ N20 validación de entrada de checkout — inválida (1 ms)
+  ✓ N21 validación de entrada de checkout — inválida
+  ✓ N22 validación de entrada de checkout — inválida
+  ✓ N23 validación de entrada de checkout — inválida
+  Integrante 2 — combinatoria del cálculo de checkout
+    ✓ C01 descuento, impuesto posterior y umbral de envío — válida (5 ms)
+    ✓ C02 descuento, impuesto posterior y umbral de envío — límite (1 ms)
+    ✓ C03 descuento, impuesto posterior y umbral de envío — válida (1 ms)
+    ✓ C04 descuento, impuesto posterior y umbral de envío — límite (1 ms)
+    ✓ C05 descuento, impuesto posterior y umbral de envío — límite (1 ms)
+    ✓ C06 descuento, impuesto posterior y umbral de envío — límite (1 ms)
+    ✓ C07 descuento, impuesto posterior y umbral de envío — válida (3 ms)
+    ✓ C08 descuento, impuesto posterior y umbral de envío — límite
+    ✓ C09 descuento, impuesto posterior y umbral de envío — válida
+    ✓ C10 mínimo porcentual incumplido impide calcular cobro — inválida (19 ms)
+    ✓ A01 reparto proporcional, resto y redondeo al centavo — límite (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       34 passed, 34 total
+Snapshots:   0 total
+Time:        0.749 s
+Ran all test suites matching /tests\/services\/pricingCombinatorio.integrante2.test.js/i.
