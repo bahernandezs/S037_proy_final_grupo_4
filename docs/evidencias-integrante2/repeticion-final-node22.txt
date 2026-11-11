@@ -1,9 +1,0 @@
-PASS tests/routes/checkoutIntegrante2.test.js
-PASS tests/routes/categoriesIntegrante2.test.js
-PASS tests/services/pricingCombinatorio.integrante2.test.js
-
-Test Suites: 3 passed, 3 total
-Tests:       45 passed, 45 total
-Snapshots:   0 total
-Time:        2.139 s
-Ran all test suites matching /tests\/routes\/categoriesIntegrante2.test.js|tests\/routes\/checkoutIntegrante2.test.js|tests\/services\/pricingCombinatorio.integrante2.test.js/i.

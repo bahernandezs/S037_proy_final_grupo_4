@@ -147,3 +147,9 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Documentación y evidencias locales del integrante 2
+/docs/aporte-integrante2.md
+/docs/informe-integrante2-a1.md
+/docs/evidencias-integrante2/
+/S037_A1_grupo_4.pdf
