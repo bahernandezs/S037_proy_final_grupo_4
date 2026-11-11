@@ -1,5 +1,47 @@
 # Aporte individual — integrante 2, A1 Suite automatizada
 
+## Actualización verificada del 11 de noviembre de 2026
+
+Esta actualización sustituye las cifras y pendientes de cobertura de las mediciones anteriores conservadas abajo. Se incorporaron siete pruebas HTTP propias en `tests/routes/checkoutIntegrante2.test.js`. La ejecución y repetición con Node v22.23.4 aprueban las **45 pruebas propias**, distribuidas en 9 válidas, 8 de límite y 28 inválidas.
+
+| ID | Regla y clase | Oráculo | Resultado |
+| --- | --- | --- | --- |
+| Q01 | Cobro sin cupón, válida | 2×30, impuesto 6, total 66; stock 5→3; un pedido y una línea; estado checked_out | Pasa |
+| Q02 | Cobro percent 0.1, mínimo 50, válida | Subtotal 60, descuento 6, base 54, impuesto 5.4, total 59.4; persistencia y stock | Pasa |
+| Q03 | Cobro fixed 10, válida | Subtotal 60, descuento 10, base 50, impuesto 5, total 55; persistencia y stock | Pasa |
+| Q04 | Stock insuficiente, inválida | Dos líneas de cantidad 2, stocks 5 y 1; 400; stocks intactos; carrito open; cero pedidos y líneas | Pasa |
+| Q05 | ID abc, inválida | 400, Cart ID should be a number; cero pedidos y líneas | Pasa |
+| Q06 | ID 99999, inválida | 404, Cart doesn't exist; cero pedidos y líneas | Pasa |
+| Q07 | Carrito vacío, límite | Checkout 400 Cart is empty; GET pedido 404 Order not found; carrito open y cero pedidos/líneas | Pasa |
+
+Q01–Q03 también cambian el precio a 99 después del cobro y comprueban que GET devuelve el pedido original completo. Un segundo cobro debe rechazarse sin descontar stock ni duplicar registros. Los nombres exactos de los siete `it` constan en [el log individual](evidencias-integrante2/checkout-node22.txt).
+
+La corrección autorizada de I1 toma el archivo de `origin/main` 1054538 y elimina únicamente el prefijo accidental `npm` de su primera línea. Los cinco casos de ese archivo ya se ejecutan. El sexto caso descrito en el PDF continúa pendiente de conciliación con Lilineth.
+
+| Servicio | Ramas cubiertas / total | Cobertura |
+| --- | --- | --- |
+| cartService.js | 13/18 | 72.22% |
+| checkoutService.js | 29/32 | 90.62% |
+| pricing.js | 62/62 | 100% |
+| Agregado carrito + checkout + pricing | 104/112 | **92.86%** |
+| Todos los servicios, incluido productService | 108/138 | 78.26% |
+
+Se cumple el 70% tanto agregado como individualmente en los tres servicios del alcance. ProductService conserva 15.38% y su recurso permanece fuera del alcance principal.
+
+La suite completa con cobertura registra **76 casos, 70 aprobados y 6 fallidos**, en 10 suites (8 aprobadas, 2 fallidas). Los 18 cuerpos vacíos heredados se excluyen del conteo funcional, que queda en 58 casos, 52 aprobados y 6 fallidos. Los fallos son los tres conocidos de I3 y los de I1 para cantidad 0, cantidad −3 y pertenencia de carrito. Se conserva la cautela sobre el contrato de redondeo de H3. [Reporte final](evidencias-integrante2/cobertura-final-node22.txt).
+
+**Hueco actualizado.** Q04 cubre ahora la condición de stock insuficiente en checkoutService.js:98–99 y comprueba estado final atómico. No instrumenta el orden de lectura, por lo que no demuestra que se intentara guardar la primera línea antes del rechazo. Permanece sin cubrir checkoutService.js:150–151, brazo verdadero de `if (!cart)` en `getOrder`. Entrada propuesta para A3: GET /cart/99999/order, respuesta 404 Cart doesn't exist y ausencia de pedidos. Su riesgo es responder incorrectamente al consultar un carrito inexistente. La prueba POST Q06 no ejecuta ese camino de GET. La decisión es dejar explícitamente esa rama para A3.
+
+**Registro de IA adicional.** Codex propuso y conservó Q01–Q07, con oráculos monetarios del README, consultas de persistencia, pedido congelado y estado final tras rechazo. Se actualizó la decisión del hueco anterior para cubrir inventario insuficiente en A1. La revisión humana sigue pendiente.
+
+Comandos ejecutados con Node v22.23.4:
+- `npx jest tests/routes/checkoutIntegrante2.test.js --runInBand` — 7/7.
+- `npm run test:coverage -- --runInBand` — 70 aprobadas, 6 fallidas.
+- `npx jest tests/routes/categoriesIntegrante2.test.js tests/routes/checkoutIntegrante2.test.js tests/services/pricingCombinatorio.integrante2.test.js --runInBand` — repetición 45/45.
+
+
+## Antecedentes de la medición anterior
+
 Fecha: 2026-11-10. Rama: `test/es-pruebas-categorias-combinatorio`.
 Alcance: categorías y cálculo puro del checkout del carrito. Productos solo aparecen en el contrato de las líneas de cálculo; no se añaden pruebas del recurso productos. No se modifican producción, pruebas ajenas, README ni informe grupal.
 
