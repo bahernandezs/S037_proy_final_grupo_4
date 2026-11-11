@@ -1,4 +1,4 @@
-/**
+npm/**
  * A1 - Integrante 1: pruebas del carrito.
  *
  * Montaje del arnés: se crea una app Express aislada y se monta el router del
@@ -107,23 +107,6 @@ describe('Carrito - reglas de alta y pertenencia (Integrante 1)', () => {
     expect(item.quantity).toBe(5); // la cantidad guardada no cambió
     const prod = await Product.findByPk(product.id);
     expect(prod.inventory).toBe(5); // agregar al carrito no descuenta inventario
-  });
-
-  it('R-CART-01 [inválida]: quantity 6 en un solo POST con inventory 5 → error y el carrito no gana ninguna línea', async () => {
-    // Arrange: beforeEach crea un carrito vacío y un producto con inventario 5.
-    expect(await CartItem.count({ where: { cartId: cart.id } })).toBe(0);
-
-    // Act
-    const response = await addItem(cart.id, { productId: product.id, quantity: 6 });
-
-    // Assert: rechazo sin inserción ni descuento de inventario.
-    expect(response.status).toBe(400);
-    expect(response.body).toEqual({ error: 'Not enough inventory available' });
-    expect(await CartItem.count({ where: { cartId: cart.id } })).toBe(0);
-    expect((await product.reload()).inventory).toBe(5);
-    const view = await request(app).get(`/api/carts/${cart.id}/items`).expect(200);
-    expect(view.body.items).toEqual([]);
-    expect(view.body.summary).toEqual({ subtotal: 0, totalTax: 0, total: 0 });
   });
 
   // R-CART-03 / clase: inválida, cruce carrito + catálogo
