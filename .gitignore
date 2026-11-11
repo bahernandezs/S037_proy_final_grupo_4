@@ -155,3 +155,10 @@ vite.config.ts.timestamp-*
 /S037_A1_grupo_4.pdf
 
 /S037_A1_grupo_4.docx
+
+# Auditoría académica local
+/docs/auditoria-final-A1.md
+/docs/checklist-entrega-A1.md
+/docs/propuesta-correcciones-informe-A1.md
+
+/A1-entrega.zip

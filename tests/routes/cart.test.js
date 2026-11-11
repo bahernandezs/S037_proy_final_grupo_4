@@ -53,16 +53,20 @@ describe('Cart Routes', () => {
   });
 
   describe('GET /api/carts/:cartId/items', () => {
-    it('should return 404 when cart does not exist', async () => {
+    it('Consulta de carrito inexistente — inválida: GET devuelve error y no crea carrito', async () => {
       const response = await request(app)
       .get('/api/carts/1/items')
       .expect(404);
+      expect(response.body).toEqual({ error: "Cart doesn't exist" });
+      expect(await Cart.count()).toBe(0);
     });
 
-    it('should return 400 when cart id wrong format', async () => {
+    it('Identificador numérico de carrito — inválida: GET rechaza texto sin crear carrito', async () => {
       const response = await request(app)
       .get('/api/carts/nonidad123/items')
       .expect(400);
+      expect(response.body).toEqual({ error: 'Cart ID should be a number' });
+      expect(await Cart.count()).toBe(0);
     });
   });
 });

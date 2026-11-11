@@ -23,7 +23,7 @@ describe('Category Routes', () => {
   });
 
   describe('POST /api/categories', () => {
-    it('should create a new category', async () => {
+    it('Nombre nuevo y persistencia — válida: crear Electronics', async () => {
       const categoryData = {
         name: 'Electronics'
       };
@@ -35,6 +35,8 @@ describe('Category Routes', () => {
 
       expect(response.body).toHaveProperty('name', 'Electronics');
       expect(response.body).toHaveProperty('id');
+      expect(await Category.count()).toBe(1);
+      expect((await Category.findByPk(response.body.id)).name).toBe('Electronics');
     });
   });
 

@@ -163,7 +163,7 @@ npm run test:coverage
 
 ### Resultado esperado de `npm test`
 
-`npm test` puede terminar con pruebas en rojo. Esos fallos son **hallazgos**: el servidor incumple una regla de este README y la prueba se deja fallando a propósito (no se modifica la aserción). Los hallazgos están documentados en `docs/aporte-integrante3.md` y en el informe.
+`npm test` puede terminar con pruebas en rojo. Cinco fallos corresponden a incumplimientos explícitos de cantidad o pertenencia (H1, H2 y H4). H3 registra una diferencia numérica del GET cuya expectativa de redondeo no está fijada por este README y requiere acuerdo sobre el contrato. Las aserciones se conservan para permitir esa revisión. Los hallazgos están documentados en `docs/aporte-integrante3.md` y en el informe.
 
 Para correr solo un archivo, por ejemplo las pruebas de integración del carrito:
 
@@ -182,3 +182,11 @@ npx stryker run
 ```
 
 Eso generará un reporte en el archivo `reports/mutation.html` que pueden abrir con cualquier navegador.
+
+### Revisión de entrega A1
+
+La revisión se identifica mediante `git rev-parse HEAD`. Ejecutar `npm ci` con Node v22.23.4 y después `npm test` y `npm run test:coverage`.
+
+El alcance principal es carrito y categorías. Los servicios evaluados del carrito son `cartService.js`, `checkoutService.js` y `pricing.js`. Productos aportan datos y cruces. Categorías usa directamente su modelo y router.
+
+El informe y las evidencias de Edwin se entregan como archivos adjuntos locales. El paquete A1-entrega.zip incluye una copia del código de la revisión, el informe de cuatro páginas, la matriz ampliada y los reportes de ejecución. Debe verificarse el SHA del paquete frente a la revisión que se entrega. Los 18 cuerpos vacíos heredados no cuentan como casos funcionales.
